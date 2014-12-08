@@ -1,0 +1,346 @@
+******************************************************************************
+                  TI ARM Linker PC v5.1.1                      
+******************************************************************************
+>> Linked Tue May 27 19:13:02 2014
+
+OUTPUT FILE NAME:   <sd-card.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00001dc5
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00002376  0003dc8a  R  X
+  SRAM                  20000000   00008000  000017ee  00006812  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00002378   00002378    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00002028   00002028    r-x .text
+  00002294    00002294    0000009a   0000009a    r-- .const
+  00002330    00002330    00000048   00000048    r-- .cinit
+20000000    20000000    000017f0   00000000    rw-
+  20000000    20000000    0000026c   00000000    rw- .vtable
+  2000026c    2000026c    00001466   00000000    rw- .bss
+  200016d4    200016d4    00000100   00000000    rw- .stack
+  200017d4    200017d4    0000001c   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     startup_ccs.obj (.intvecs)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.text      0    0000026c    00002028     
+                  0000026c    00000310     ff.obj (.text:chk_mounted)
+                  0000057c    000001ea     uartstdio.obj (.text:UARTvprintf)
+                  00000766    00000002     startup_ccs.obj (.text:FaultISR)
+                  00000768    00000198     sd-card.obj (.text:main)
+                  00000900    0000018e     ff.obj (.text:f_write)
+                  00000a8e    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  00000a90    00000154     mmc-tm4c123g.obj (.text:disk_ioctl)
+                  00000be4    0000014c     ff.obj (.text:f_open)
+                  00000d30    00000140     mmc-tm4c123g.obj (.text:disk_initialize)
+                  00000e70    00000123     ff.obj (.text:create_name)
+                  00000f93    00000001     --HOLE-- [fill = 0]
+                  00000f94    000000f4     ff.obj (.text:dir_next)
+                  00001088    000000dc     ff.obj (.text:put_fat)
+                  00001164    000000ce     ff.obj (.text:get_fat)
+                  00001232    00000002     startup_ccs.obj (.text:NmiSR)
+                  00001234    000000c4     mmc-tm4c123g.obj (.text:power_on)
+                  000012f8    000000c0     driverlib.lib : sysctl.obj (.text:SysCtlClockGet)
+                  000013b8    000000be     ff.obj (.text:sync_fs)
+                  00001476    00000002     --HOLE-- [fill = 0]
+                  00001478    000000bc     mmc-tm4c123g.obj (.text:disk_write)
+                  00001534    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000015d0    00000098     ff.obj (.text:create_chain)
+                  00001668    00000096     ff.obj (.text:f_sync)
+                  000016fe    00000002     --HOLE-- [fill = 0]
+                  00001700    00000094     rtsv7M4_T_le_v4SPD16_eabi.lib : auto_init.obj (.text)
+                  00001794    00000090     mmc-tm4c123g.obj (.text:disk_read)
+                  00001824    0000007c     ff.obj (.text:dir_sdi)
+                  000018a0    00000074     ff.obj (.text:check_fs)
+                  00001914    00000064     ff.obj (.text:follow_path)
+                  00001978    00000064     ff.obj (.text:remove_chain)
+                  000019dc    00000062     mmc-tm4c123g.obj (.text:send_cmd)
+                  00001a3e    0000005e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text)
+                  00001a9c    0000005c     sd-card.obj (.text:_Z9uart_initv)
+                  00001af8    00000058     uartstdio.obj (.text:UARTStdioConfig)
+                  00001b50    00000054     mmc-tm4c123g.obj (.text:send_initial_clock_train)
+                  00001ba4    00000054     ff.obj (.text:sync_window)
+                  00001bf8    00000052     mmc-tm4c123g.obj (.text:xmit_datablock)
+                  00001c4a    00000002     --HOLE-- [fill = 0]
+                  00001c4c    00000050     mmc-tm4c123g.obj (.text:set_max_speed)
+                  00001c9c    0000004c     sd-card.obj (.text:_Z13test_functionv)
+                  00001ce8    0000004a     ff.obj (.text:dir_find)
+                  00001d32    00000002     --HOLE-- [fill = 0]
+                  00001d34    00000048     uartstdio.obj (.text:UARTwrite)
+                  00001d7c    00000048     mmc-tm4c123g.obj (.text:rcvr_datablock)
+                  00001dc4    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00001e0c    00000044                                   : cpy_tbl.obj (.text)
+                  00001e50    00000044                                   : exit.obj (.text)
+                  00001e94    00000042                                   : u_divt2.obj (.text)
+                  00001ed6    0000003e     ff.obj (.text:dir_alloc)
+                  00001f14    00000038     ff.obj (.text:dir_register)
+                  00001f4c    00000034     driverlib.lib : interrupt.obj (.text:IntRegister)
+                  00001f80    00000032     mmc-tm4c123g.obj (.text:send_cmd12)
+                  00001fb2    0000002e     ff.obj (.text:move_window)
+                  00001fe0    00000028     ff.obj (.text:f_mount)
+                  00002008    00000028     mmc-tm4c123g.obj (.text:rcvr_spi)
+                  00002030    00000028     ff.obj (.text:validate)
+                  00002058    00000024     mmc-tm4c123g.obj (.text:disk_timerproc)
+                  0000207c    00000024     mmc-tm4c123g.obj (.text:xmit_spi)
+                  000020a0    00000020     mmc-tm4c123g.obj (.text:wait_ready)
+                  000020c0    0000001e     ff.obj (.text:ld_clust)
+                  000020de    00000002     --HOLE-- [fill = 0]
+                  000020e0    0000001c     mmc-tm4c123g.obj (.text:DESELECT)
+                  000020fc    0000001c     mmc-tm4c123g.obj (.text:SELECT)
+                  00002118    0000001c     driverlib.lib : systick.obj (.text:SysTickIntRegister)
+                  00002134    0000001c     ff.obj (.text:mem_cmp)
+                  00002150    0000001a     uartstdio.obj (.text:UARTprintf)
+                  0000216a    00000018     sd-card.obj (.text:_Z14SysTickHandlerv)
+                  00002182    00000018     ff.obj (.text:clust2sect)
+                  0000219a    00000002     --HOLE-- [fill = 0]
+                  0000219c    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  000021b4    00000014                                   : _lock.obj (.text)
+                  000021c8    00000014                                   : strlen.obj (.text)
+                  000021dc    00000012     ff.obj (.text:chk_chr)
+                  000021ee    00000012     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  00002200    00000010     mmc-tm4c123g.obj (.text:disk_status)
+                  00002210    00000010     ff.obj (.text:f_close)
+                  00002220    00000010     ff.obj (.text:mem_cpy)
+                  00002230    00000010     ff.obj (.text:st_clust)
+                  00002240    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  0000224e    0000000e     ff.obj (.text:mem_set)
+                  0000225c    0000000c     mmc-tm4c123g.obj (.text:chk_power)
+                  00002268    0000000c     mmc-tm4c123g.obj (.text:power_off)
+                  00002274    0000000c     mmc-tm4c123g.obj (.text:rcvr_spi_m)
+                  00002280    00000008     mmc-tm4c123g.obj (.text:get_fattime)
+                  00002288    00000006     startup_ccs.obj (.text:ResetISR)
+                  0000228e    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+
+.const     0    00002294    0000009a     
+                  00002294    0000006c     driverlib.lib : sysctl.obj (.const:g_pui32Xtals)
+                  00002300    0000001c     uartstdio.obj (.const)
+                  0000231c    00000012     uartstdio.obj (.const:.string)
+
+.cinit     0    00002330    00000048     
+                  00002330    00000013     (.cinit..data.load) [load image, compression = rle]
+                  00002343    00000001     --HOLE-- [fill = 0]
+                  00002344    0000000c     (__TI_handler_table)
+                  00002350    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00002358    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00002360    00000018     (__TI_cinit_table)
+
+.vtable    0    20000000    0000026c     UNINITIALIZED
+                  20000000    0000026c     driverlib.lib : interrupt.obj (.vtable)
+
+.bss       0    2000026c    00001466     UNINITIALIZED
+                  2000026c    00001000     sd-card.obj (.bss:buffer)
+                  2000126c    00000234     sd-card.obj (.bss:fatfs)
+                  200014a0    00000224     sd-card.obj (.bss:fil)
+                  200016c4    00000004     (.common:FatFs)
+                  200016c8    00000004     (.common:bw)
+                  200016cc    00000002     (.common:Fsid)
+                  200016ce    00000001     (.common:CardType)
+                  200016cf    00000001     (.common:Timer1)
+                  200016d0    00000001     (.common:Timer2)
+                  200016d1    00000001     (.common:rc)
+
+.stack     0    200016d4    00000100     UNINITIALIZED
+                  200016d4    00000100     --HOLE--
+
+.data      0    200017d4    0000001c     UNINITIALIZED
+                  200017d4    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  200017dc    00000008                                   : exit.obj (.data)
+                  200017e4    00000005     uartstdio.obj (.data)
+                  200017e9    00000002     mmc-tm4c123g.obj (.data)
+                  200017eb    00000001     --HOLE--
+                  200017ec    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00002360 records: 3, size/record: 8, table size: 24
+	.data: load addr=00002330, load size=00000013 bytes, run addr=200017d4, run size=0000001c bytes, compression=rle
+	.bss: load addr=00002350, load size=00000008 bytes, run addr=2000026c, run size=00001466 bytes, compression=zero_init
+	.vtable: load addr=00002358, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00002344 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_rle24
+	index: 2, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+00001e51   C$$EXIT
+00001f4d   IntRegister
+00002289   ResetISR
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+000012f9   SysCtlClockGet
+00002119   SysTickIntRegister
+00001af9   UARTStdioConfig
+00002151   UARTprintf
+0000057d   UARTvprintf
+00001d35   UARTwrite
+00001c9d   _Z13test_functionv
+0000216b   _Z14SysTickHandlerv
+00001a9d   _Z9uart_initv
+200017d4   __STACK_END
+00000100   __STACK_SIZE
+200017d4   __STACK_TOP
+00002360   __TI_CINIT_Base
+00002378   __TI_CINIT_Limit
+00002344   __TI_Handler_Table_Base
+00002350   __TI_Handler_Table_Limit
+00000001   __TI_args_main
+00001701   __TI_auto_init
+200017dc   __TI_cleanup_ptr
+00002241   __TI_decompress_none
+0000228f   __TI_decompress_rle24
+200017e0   __TI_dtors_ptr
+00000000   __TI_static_base__
+000021ef   __TI_zero_init
+00001535   __aeabi_memcpy
+00001535   __aeabi_memcpy4
+00001535   __aeabi_memcpy8
+00001e95   __aeabi_uidivmod
+ffffffff   __binit__
+ffffffff   __c_args__
+200016d4   __stack
+0000219d   _args_main
+00001dc5   _c_int00
+200017d4   _lock
+000021c3   _nop
+000021bb   _register_lock
+000021b5   _register_unlock
+200017d8   _unlock
+00001e55   abort
+ffffffff   binit
+2000026c   buffer
+200016c8   bw
+00002183   clust2sect
+00001e0d   copy_in
+00000d31   disk_initialize
+00000a91   disk_ioctl
+00001795   disk_read
+00002201   disk_status
+00002059   disk_timerproc
+00001479   disk_write
+00001e5d   exit
+00002211   f_close
+00001fe1   f_mount
+00000be5   f_open
+00001669   f_sync
+00000901   f_write
+2000126c   fatfs
+200014a0   fil
+20000000   g_pfnRAMVectors
+00000000   g_pfnVectors
+00001165   get_fat
+00002281   get_fattime
+00000769   main
+200017ec   main_func_sp
+00001535   memcpy
+00001089   put_fat
+200016d1   rc
+000021c9   strlen
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   __TI_static_base__
+00000000   g_pfnVectors
+00000001   __TI_args_main
+00000100   __STACK_SIZE
+0000057d   UARTvprintf
+00000769   main
+00000901   f_write
+00000a91   disk_ioctl
+00000be5   f_open
+00000d31   disk_initialize
+00001089   put_fat
+00001165   get_fat
+000012f9   SysCtlClockGet
+00001479   disk_write
+00001535   __aeabi_memcpy
+00001535   __aeabi_memcpy4
+00001535   __aeabi_memcpy8
+00001535   memcpy
+00001669   f_sync
+00001701   __TI_auto_init
+00001795   disk_read
+00001a9d   _Z9uart_initv
+00001af9   UARTStdioConfig
+00001c9d   _Z13test_functionv
+00001d35   UARTwrite
+00001dc5   _c_int00
+00001e0d   copy_in
+00001e51   C$$EXIT
+00001e55   abort
+00001e5d   exit
+00001e95   __aeabi_uidivmod
+00001f4d   IntRegister
+00001fe1   f_mount
+00002059   disk_timerproc
+00002119   SysTickIntRegister
+00002151   UARTprintf
+0000216b   _Z14SysTickHandlerv
+00002183   clust2sect
+0000219d   _args_main
+000021b5   _register_unlock
+000021bb   _register_lock
+000021c3   _nop
+000021c9   strlen
+000021ef   __TI_zero_init
+00002201   disk_status
+00002211   f_close
+00002241   __TI_decompress_none
+00002281   get_fattime
+00002289   ResetISR
+0000228f   __TI_decompress_rle24
+00002344   __TI_Handler_Table_Base
+00002350   __TI_Handler_Table_Limit
+00002360   __TI_CINIT_Base
+00002378   __TI_CINIT_Limit
+20000000   g_pfnRAMVectors
+2000026c   buffer
+2000126c   fatfs
+200014a0   fil
+200016c8   bw
+200016d1   rc
+200016d4   __stack
+200017d4   __STACK_END
+200017d4   __STACK_TOP
+200017d4   _lock
+200017d8   _unlock
+200017dc   __TI_cleanup_ptr
+200017e0   __TI_dtors_ptr
+200017ec   main_func_sp
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+
+[73 symbols]
